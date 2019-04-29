@@ -64,7 +64,7 @@ class Layout extends React.Component {
         <footer>
           © {new Date().getFullYear()},  
           {` `}
-          <a href="http://www.dialogdesign.ca/">Dialog Design</a>
+          <a href="http://www.dialogdesign.ca/">DIALOG</a>
         </footer>
       </div>
     )
