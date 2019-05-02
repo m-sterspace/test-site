@@ -2,22 +2,30 @@ import React from "react"
 import { Link, graphql } from "gatsby"  
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography" 
+import { rhythm, scale } from "../utils/typography"      
+import { csvParse } from 'd3-dsv'; 
+import Chart from "../components/chart";
 
-class ProjectTemplate extends React.Component {
+class ProjectAnalysis extends React.Component { 
+  
   render() {
-    const post = this.props.data.markdownRemark
+    const post = this.props.data.markdownRemark 
     const siteTitle = this.props.data.site.siteMetadata.title 
-    const { previous, next } = this.props.pageContext
-
+    const { previous, next } = this.props.pageContext 
+ 
+    const csv  = require('../../content/projects' + this.props.data.markdownRemark.fields.slug + 'index.csv');    
+    const chart =  csvParse(csv.default, d => { 
+      return d;
+    }) 
+            
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <h1>{post.frontmatter.title}</h1> 
-        
+        <h1>{post.frontmatter.title}</h1>  
+
         <p
           style={{
             ...scale(-1 / 5),
@@ -28,7 +36,8 @@ class ProjectTemplate extends React.Component {
         >
           {post.frontmatter.date}
         </p> 
- 
+            
+        <Chart data={chart} /> 
 
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
@@ -66,10 +75,10 @@ class ProjectTemplate extends React.Component {
   }
 }
 
-export default ProjectTemplate
+export default ProjectAnalysis
 
 export const pageQuery = graphql`
-  query ProjectBySlug($slug: String!) {
+  query ProjectTypeABySlug($slug: String!) {
     site {
       siteMetadata {
         title
@@ -80,11 +89,14 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         description
       }
-    } 
+    }  
   }
 `

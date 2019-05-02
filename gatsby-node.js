@@ -2,9 +2,9 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`) 
  
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions 
+  const component = path.resolve(`./src/templates/projectanalysis.js`)  
 
-  const projectTemplate = path.resolve(`./src/templates/project.js`)
   return graphql(
     `
       {
@@ -36,10 +36,10 @@ exports.createPages = ({ graphql, actions }) => {
     projects.forEach((project, index) => {
       const previous = index === projects.length - 1 ? null : projects[index + 1].node
       const next = index === 0 ? null : projects[index - 1].node
-
+  
       createPage({
         path: project.node.fields.slug,
-        component: projectTemplate,
+        component: component,
         context: {
           slug: project.node.fields.slug,
           previous,
