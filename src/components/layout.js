@@ -40,7 +40,7 @@ class Layout extends React.Component {
         }}
       >
         <header>{header}</header>
-        <main>{children}</main>
+        <main className="project_grid">{children}</main>
         <footer>
           © {new Date().getFullYear()},  
           {` `}
