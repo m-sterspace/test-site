@@ -24,23 +24,22 @@ class Layout extends React.Component {
             src="\header_image.png" 
             />
             </Link>
-            <div className="seperator"  >
+            <div className="seperator">
               energy analysis explorer
             </div>
         </div>
-  </div> 
-
+      </div> 
     )
     return (
       <div
         style={{
           marginLeft: `auto`,
           marginRight: `auto`,
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+          padding: `${rhythm(1/2)} ${rhythm(1/2)}`,
         }}
       >
         <header>{header}</header>
-        <main className="project_grid">{children}</main>
+        <main>{children}</main>
         <footer>
           © {new Date().getFullYear()},  
           {` `}

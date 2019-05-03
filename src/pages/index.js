@@ -16,6 +16,7 @@ class Index extends React.Component {
           title="Projects"
           keywords={[`gatsby`, `javascript`, `react`]}
         /> 
+        <div  className="project_grid">
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
@@ -38,6 +39,7 @@ class Index extends React.Component {
             </div>
           )
         })}
+        </div>
       </Layout>
     )
   }

@@ -1,7 +1,12 @@
+/* site general */
+h1{
+  margin-top: 1.5rem;
+}
+
+/* site chrome */
 .header {
   width: 100%;
 }
-
 .header img {
   margin-bottom: 0;
 }
@@ -14,10 +19,10 @@
   font-size: 4vmin;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
-  line-height: 1.6em;
-  padding-bottom: 2vh;
 }
 
+
+/* project page */
 .project_grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -33,6 +38,8 @@
     height: 250px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+/* pararell coordinates graph */
 .parcoords > canvas {
   font: 11px sans-serif;
   position: absolute;
