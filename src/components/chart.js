@@ -14,7 +14,7 @@ class Chart extends React.Component {
   render() {
         const { data } = this.props  
         
-        const props = {           
+        const props = {                 
             color: this.applyColor,    
             data: data,
             alpha: 0.2,

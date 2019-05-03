@@ -1,72 +1,52 @@
-import React from "react"
-import { Link } from "gatsby" 
-import { rhythm, scale } from "../utils/typography"
+import React from "react" 
+import Navigation from './Navigation'
+import styled, { ThemeProvider, createGlobalStyle  } from "styled-components"
+import theme from "../../config/theme"
+
+const Footer = styled.footer`
+  margin: 8rem 2rem 2rem; 
+  padding: 1rem ${props => props.theme.spacer.horizontal}; 
+  color: ${props => props.theme.colors.grey};
+  a {
+    text-decoration: none;
+    color: ${props => props.theme.brand.primary};
+  }
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+`
+
+const GlobalStyle = createGlobalStyle` 
+  html {
+    font-family: 'Roboto', sans-serif;
+  }
+  body {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 16px; 
+  }
+  h1, h2, h3, h4, h5, h6 { 
+    font-family: "Clanbold", Arial, Helvetica, Sans-serif; 
+  } 
+  a {
+    box-shadow: none
+  }
+`; 
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    let header
-
-    if (location.pathname === rootPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
-    return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()},  
-          {` `}
-          <a href="http://www.dialogdesign.ca/">DIALOG</a>
-        </footer>
-      </div>
+    const { children } = this.props  
+    return ( 
+      <ThemeProvider theme={theme}>
+          <>
+          <GlobalStyle />
+          <Navigation />  
+          {children} 
+          <Footer>
+            Copyright © DIALOG { new Date().getFullYear()}  
+          </Footer>
+          </>
+      </ThemeProvider> 
     )
   }
 }

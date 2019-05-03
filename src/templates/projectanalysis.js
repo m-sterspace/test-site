@@ -2,44 +2,62 @@ import React from "react"
 import { Link, graphql } from "gatsby"  
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"      
+import { rhythm } from "../utils/typography"      
 import { csvParse } from 'd3-dsv'; 
 import Chart from "../components/chart";
+import Container from "../components/container" 
+import styled from 'styled-components'
 
 class ProjectAnalysis extends React.Component { 
-  
+    
   render() {
     const post = this.props.data.markdownRemark 
     const siteTitle = this.props.data.site.siteMetadata.title 
-    const { previous, next } = this.props.pageContext 
- 
+    const { previous, next } = this.props.pageContext  
+
     const csv  = require('../../content/projects' + this.props.data.markdownRemark.fields.slug + 'index.csv');    
     const chart =  csvParse(csv.default, d => { 
       return d;
     }) 
             
+    const Grid = styled.div`
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      width: 100%; 
+    `
+    const GridColumn = styled.div`  
+      padding: 1em;
+    ` 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={this.props.location} title={siteTitle}> 
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
+        
+        <Container> 
         <h1>{post.frontmatter.title}</h1>  
-
         <p
           style={{
-            ...scale(-1 / 5),
+            color: "#999",
             display: `block`,
             marginBottom: rhythm(1),
             marginTop: rhythm(-1),
-          }}
-        >
+          }} >
           {post.frontmatter.date}
         </p> 
-            
-        <Chart data={chart} /> 
+        <p>{post.frontmatter.description}</p>
 
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <Chart data={chart} />  
+
+        <Grid>
+          <GridColumn> 
+            <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          </GridColumn>
+          <GridColumn>
+          </GridColumn>
+        </Grid> 
+  
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -70,6 +88,7 @@ class ProjectAnalysis extends React.Component {
             )}
           </li>
         </ul>
+        </Container>
       </Layout>
     )
   }

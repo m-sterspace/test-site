@@ -9,6 +9,14 @@ module.exports = {
     },
   },
   plugins: [
+    'gatsby-plugin-styled-components',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'projects',
+        path: `${__dirname}/content/projects`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -79,7 +87,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/DialogD.png`,
+        icon: `src/images/DialogD.png`,
       },
     }
   ],
