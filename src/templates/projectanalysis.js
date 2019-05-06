@@ -14,7 +14,6 @@ class ProjectAnalysis extends React.Component {
     const post = this.props.data.markdownRemark 
     const siteTitle = this.props.data.site.siteMetadata.title 
     const { previous, next } = this.props.pageContext  
-
     const csv  = require('../../content/projects' + this.props.data.markdownRemark.fields.slug + 'index.csv');    
     const chart =  csvParse(csv.default, d => { 
       return d;
@@ -28,6 +27,7 @@ class ProjectAnalysis extends React.Component {
     const GridColumn = styled.div`  
       padding: 1em;
     ` 
+    
     return (
       <Layout location={this.props.location} title={siteTitle}> 
         <SEO
@@ -36,58 +36,56 @@ class ProjectAnalysis extends React.Component {
         />
         
         <Container> 
-        <h1>{post.frontmatter.title}</h1>  
-        <p
-          style={{
-            color: "#999",
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }} >
-          {post.frontmatter.date}
-        </p> 
-        <p>{post.frontmatter.description}</p>
+          <h1>{post.frontmatter.title}</h1>  
+          <p
+            style={{
+              color: "#999",
+              display: `block`,
+              marginBottom: rhythm(.5),
+              marginTop: rhythm(-1),
+            }} >
+            {post.frontmatter.description}
+          </p> 
+          <p>
+            {post.frontmatter.date}
+          </p>
 
-        <Chart data={chart} />  
+          <Chart data={chart} />  
 
-        <Grid>
-          <GridColumn> 
-            <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          </GridColumn>
-          <GridColumn>
-          </GridColumn>
-        </Grid> 
-  
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />  
+          <Grid>
+            <GridColumn> 
+              <div dangerouslySetInnerHTML={{ __html: post.html }} />
+            </GridColumn>
+            <GridColumn>  
+            </GridColumn>
+          </Grid> 
+    
+          <hr style={{ marginBottom: rhythm(1), }} />  
 
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
+          <ul
+            style={{
+              display: `flex`,
+              flexWrap: `wrap`,
+              justifyContent: `space-between`,
+              listStyle: `none`,
+              padding: 0,
+            }}
+          >
+            <li>
+              {previous && (
+                <Link to={previous.fields.slug} rel="prev">
+                  ← {previous.frontmatter.title}
+                </Link>
+              )}
+            </li>
+            <li>
+              {next && (
+                <Link to={next.fields.slug} rel="next">
+                  {next.frontmatter.title} →
+                </Link>
+              )}
+            </li>
+          </ul>
         </Container>
       </Layout>
     )
