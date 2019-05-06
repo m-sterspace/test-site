@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
 const Wrapper = styled.div`
-  margin: 4rem 2rem 2rem; 
+  margin: 4rem 8rem 1rem;
   padding: 0 ${props => props.theme.spacer.horizontal};
   max-width: ${props => props.theme.container[props.type]};
   ${props =>
@@ -24,7 +24,8 @@ const Wrapper = styled.div`
       }
     `};
   @media (max-width: ${props => props.theme.breakpoints.s}), (max-device-width: ${props => props.theme.breakpoints.s}) {
-    padding: 0 1rem;
+    padding: 0 0rem;
+    margin: 0rem 1rem 0rem;
   }
 `
 

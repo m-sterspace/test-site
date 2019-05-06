@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"  
 import styled from "styled-components"  
-import { FaInstagram, FaLinkedin, FaYoutube, FaTwitter } from 'react-icons/fa'
+import { FaUser } from 'react-icons/fa'
 import logo from '../images/Dialog-logo_Orange.png'
 
 const Wrapper = styled.header`
@@ -76,17 +76,8 @@ class Navigation extends React.Component {
       </Nav> 
       <SocialMedia> 
           <a href="http://www.linkedin.com/company/1233090" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <FaLinkedin />
-          </a> 
-          <a href="https://www.twitter.com/dialog" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <FaTwitter />
-          </a> 
-          <a href="https://www.instagram.com/dialogdesign" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <FaInstagram />
-          </a> 
-          <a href="https://www.youtube.com/user/StartDIALOG" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <FaYoutube />
-          </a> 
+            <FaUser />
+          </a>   
       </SocialMedia>
     </Wrapper>
     )
