@@ -36,7 +36,12 @@ class ProjectAnalysis extends React.Component {
         />
         
         <Container> 
-          <h1>{post.frontmatter.title}</h1>  
+          <h1 
+            style={{
+                marginTop:rhythm(-1)
+                }}>
+            {post.frontmatter.title}
+          </h1>  
           <p
             style={{
               color: "#999",

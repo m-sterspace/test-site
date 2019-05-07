@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import Container from "../components/container"
 import styled from 'styled-components'
-import Image from "gatsby-image"
+import Image from "gatsby-image" 
 
 class Index extends React.Component {
   render() {

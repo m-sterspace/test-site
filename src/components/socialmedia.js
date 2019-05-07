@@ -4,8 +4,7 @@ const SocialMedia = styled.div`
 display: flex;
 flex: 1;
 justify-content: flex-end;
-padding: 0;
-margin: 0rem 1rem 2rem; 
+padding: 0; 
 a {
   font-size: 1.25rem;
   line-height: 20px;

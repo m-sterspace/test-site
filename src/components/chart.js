@@ -1,7 +1,6 @@
 import React from 'react';    
 import { rhythm } from "../utils/typography"
-import { ParallelCoordinates } from "react-parcoords";  
-import { IoMdRefreshCircle } from 'react-icons/io'
+import { ParallelCoordinates } from "react-parcoords";   
 
 class Chart extends React.Component { 
   constructor(props) {

@@ -2,8 +2,7 @@ import React from "react"
 import Navigation from './Navigation'
 import styled, { ThemeProvider, createGlobalStyle  } from "styled-components"
 import { FaInstagram, FaLinkedin, FaYoutube, FaTwitter } from 'react-icons/fa'
-import theme from "../../config/theme"
-import Wrapper from './wrapper.js'
+import theme from "../../config/theme" 
 import NavigationNode from './navigationnode.js'
 import SocialMedia from './socialmedia.js'
  
@@ -35,6 +34,7 @@ const Footer = styled.footer`
   right: 0;
   bottom: 0;
   left: 0;
+  display: flex;  
 ` 
 
 class Layout extends React.Component {
@@ -46,8 +46,7 @@ class Layout extends React.Component {
           <GlobalStyle />
           <Navigation />  
           {children} 
-          <Footer>
-            <Wrapper data-testid="navigation">
+          <Footer> 
               <NavigationNode>  
                   Copyright © DIALOG { new Date().getFullYear()}  
               </NavigationNode>             
@@ -64,8 +63,7 @@ class Layout extends React.Component {
                 <a href="https://www.youtube.com/user/StartDIALOG" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <FaYoutube />
                 </a> 
-            </SocialMedia>
-            </Wrapper>
+            </SocialMedia> 
           </Footer>
           </>
       </ThemeProvider> 
