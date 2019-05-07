@@ -15,8 +15,9 @@ class ProjectAnalysis extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title 
     const { previous, next } = this.props.pageContext  
     const csv  = require('../../content/projects' + this.props.data.markdownRemark.fields.slug + 'index.csv');    
-    const chart =  csvParse(csv.default, d => { 
-      return d;
+    const chart =  csvParse(csv.default, (item, index) => { 
+      item.id = index;
+      return item;
     }) 
             
     const Grid = styled.div`
@@ -26,7 +27,7 @@ class ProjectAnalysis extends React.Component {
     `
     const GridColumn = styled.div`  
       padding: 1em;
-    ` 
+    `  
     
     return (
       <Layout location={this.props.location} title={siteTitle}> 
@@ -56,7 +57,7 @@ class ProjectAnalysis extends React.Component {
           </p>
 
           <Chart data={chart} />  
-
+          
           <Grid>
             <GridColumn> 
               <div dangerouslySetInnerHTML={{ __html: post.html }} />

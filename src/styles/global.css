@@ -38,3 +38,14 @@
 .tick text {
   font-size: 11px;
 }
+
+.react-grid-Container { 
+  margin-top: 15px;  
+}
+
+.react-grid-Cell__value {
+  font-size: 10pt;
+}
+.widget-HeaderCell__value {
+  font-size: 10pt;
+}
