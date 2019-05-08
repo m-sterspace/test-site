@@ -15,8 +15,7 @@ class ProjectAnalysis extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title 
     const { previous, next } = this.props.pageContext  
     const csv  = require('../../content/projects' + this.props.data.markdownRemark.fields.slug + 'index.csv');    
-    const chart =  csvParse(csv.default, (item, index) => { 
-      item.id = index;
+    const chart =  csvParse(csv.default, (item) => {  
       return item;
     }) 
             
