@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"      
 import { csvParse } from 'd3-dsv'; 
-import Chart from "../components/chart";
+import Chart from "../components/chart"; 
 import Container from "../components/container" 
 import styled from 'styled-components'
 

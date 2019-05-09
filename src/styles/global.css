@@ -19,7 +19,9 @@
 .parcoords rect.background:hover {
   fill: rgba(120,120,120,0.2);
 }
-
+.parcoords rect.background {
+  fill: rgba(120,120,120,0.2);
+}
 .parcoords canvas {
   opacity: 1;
   transition: opacity 0.3s;
@@ -40,7 +42,7 @@
   -ms-user-select: none;
   user-select: none;
   background-color: white;
-}
+} 
 
 .tick text {
   font-size: 11px;

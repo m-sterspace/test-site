@@ -7,21 +7,15 @@ class Chart extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-        color: this.applyColor,
+    this.state = { 
         width: 1200,
         height: 350,
         dummy: false, 
-        data: props.data,
-        highlights: [],
-        highlightIdx: [],
+        data: props.data, 
         selectedIndexes: [],
-        filteredIndexes: []
+        filteredIndexes: [],
+        color: 'green' 
     };
-  }
-
-  applyColor(d) {  
-    return '#9c9ede'
   }
  
   parseColumns(columns) {
@@ -32,81 +26,60 @@ class Chart extends React.Component {
  
     return array;
   }
-  
-  parseDimensions(columns) {  
-    return Object.keys(columns)
-  }
-
-  brushEnd(data) {  
-    var d = data.data.map(r => r)
-      
-    this.setState({
-      highlights: d,
-      filteredIndexes: d
-    });   
+   
+  onBrushEnd(data) {      
+    this.setState({ 
+      filteredIndexes: data.data, 
+    });  
   }
    
-  onRowsSelected = rows => {   
-    this.setState({
-      selectedIndexes: this.state.selectedIndexes.concat(
-        rows.map(r => r.rowIdx)
-      ),
-      highlights: this.state.highlights.concat(
-        rows.map(r => r.row)
-      )
-    });     
+  onRowsSelected = rows => {    
+      console.log(rows)
+      this.setState({
+        selectedIndexes: this.state.selectedIndexes.concat(
+          rows.map(r => r)
+        ) 
+      });   
+    
   };
 
   onRowsDeselected = rows => { 
-    let rowIndexes = rows.map(r => r.rowIdx);
-    let rowsToRemove = rows.map(r => r.row);
-
+    let rowIndexes = rows.map(r => r.rowIdx);  
     this.setState({
       selectedIndexes: this.state.selectedIndexes.filter(
-        i => rowIndexes.indexOf(i) === -1
-      ),
-      highlights: this.state.highlights.filter(
-        i => rowsToRemove.indexOf(i) === -1
-      )
+        i => rowIndexes.indexOf(i.rowIdx) === -1
+      ) 
     }); 
   };
-
-  getGridRows(rows) {        
-    return this.state.filteredIndexes.length === 0 ? rows : rows.filter(
+   
+  render() {                      
+    const rows = this.props.data;
+    const filteredRows = this.state.filteredIndexes.length === 0 ? rows : rows.filter(
         i => this.state.filteredIndexes.indexOf(i) > -1 
     )
-  }
 
-  render() {                      
-    const filteredRows = this.getGridRows(this.state.data);
     return (
         <div id="grid"
               style={{ 
                 marginBottom: rhythm(2.5),
               }} >  
               
-              <span>{this.state.filteredIndexes.length || this.state.data.length}</span>
             <div
               style={{ 
                 marginBottom: rhythm(1),
               }} >   
             <ParallelCoordinates
                 width={this.state.width}
-                height={this.state.height} 
-                dimensions={this.parseDimensions(this.state.data[0])}
-                data={this.state.data}
+                height={this.state.height}  
+                data={this.props.data}
                 color={this.state.color}
-                highlights={this.state.highlights}   
-                highlightIdx={this.state.highlightIdx}   
-                onBrushEnd={d => this.brushEnd(d)}  
+                highlights={this.state.selectedIndexes.map(r => r.row)}    
+                onBrushEnd={d => this.onBrushEnd(d)}   
               />  
             </div>
-            <div
-              style={{ 
-                marginBottom: rhythm(1),
-              }} >  
+            <div>  
             <ReactDataGrid 
-                columns={this.parseColumns(this.state.data[0])}
+                columns={this.parseColumns(this.props.data[0])}
                 rowGetter={i => filteredRows[i]}
                 rowsCount={this.state.data.length} 
                 rowSelection={{
@@ -115,11 +88,15 @@ class Chart extends React.Component {
                   onRowsSelected: this.onRowsSelected,
                   onRowsDeselected: this.onRowsDeselected,
                   selectBy: {
-                    indexes: this.state.selectedIndexes
+                    indexes: this.state.selectedIndexes.map(r => { 
+                      return r.rowIdx 
+                    }) 
                   }
                 }}
                 /> 
-            </div>            
+            </div>           
+            
+            <span>Row count: {this.state.filteredIndexes.length || this.state.data.length}</span> 
         </div>
     )
   }
