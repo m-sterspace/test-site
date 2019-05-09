@@ -1,7 +1,7 @@
 import React from 'react';    
 import { rhythm } from "../utils/typography"
 import { ParallelCoordinates } from "react-parcoords";    
-import ReactDataGrid from 'react-data-grid';
+import ReactDataGrid from 'react-data-grid'; 
 
 class Chart extends React.Component { 
   constructor(props) {
@@ -15,7 +15,8 @@ class Chart extends React.Component {
         data: props.data,
         highlights: [],
         highlightIdx: [],
-        selectedIndexes: []
+        selectedIndexes: [],
+        filteredIndexes: []
     };
   }
 
@@ -38,59 +39,71 @@ class Chart extends React.Component {
   parseDimensions(columns) {  
     return Object.keys(columns)
   }
-  
-  brushEnd(data) { 
-    console.log(data)
+
+  brushEnd(data) {  
+    var d = data.data.map(r => r)
+      
+    this.setState({
+      highlights: d,
+      filteredIndexes: d
+    });   
   }
-
-  rowGetter = i => {
-    return this.state.rows[i];
-  };
-
-  onRowsSelected = rows => {  
+   
+  onRowsSelected = rows => {   
     this.setState({
       selectedIndexes: this.state.selectedIndexes.concat(
         rows.map(r => r.rowIdx)
+      ),
+      highlights: this.state.highlights.concat(
+        rows.map(r => r.row)
       )
-    }); 
-
-    rows.forEach((row) => {
-        this.state.highlights.push(row.row) 
-    }) 
+    });     
   };
 
   onRowsDeselected = rows => { 
     let rowIndexes = rows.map(r => r.rowIdx);
+    let rowsToRemove = rows.map(r => r.row);
+
     this.setState({
       selectedIndexes: this.state.selectedIndexes.filter(
         i => rowIndexes.indexOf(i) === -1
+      ),
+      highlights: this.state.highlights.filter(
+          i => rowsToRemove.indexOf(i) === -1
       )
-    });
-    rows.forEach((row) => { 
-        this.state.highlights.splice(this.state.selectedIndexes.indexOf(row), 1) 
-    }) 
+    }); 
   };
 
-  render() {                 
+  getGridRows(rows) {       
+    console.log(this.state.filteredIndexes)
+    return this.state.filteredIndexes.length <= 0 ? rows : rows.filter((r, i) => {
+      
+       return this.state.filteredIndexes[r] > -1;
+    })
+  }
+
+  render() {                      
+    const filteredRows = this.getGridRows(this.state.data);
     return (
         <div id="grid"
               style={{ 
                 marginBottom: rhythm(2.5),
               }} >  
-
+              
+              <span>{this.state.filteredIndexes.length}</span>
             <div
               style={{ 
                 marginBottom: rhythm(1),
               }} >   
             <ParallelCoordinates
-                  width={this.state.width}
-                  height={this.state.height} 
-                  dimensions={this.parseDimensions(this.state.data[0])}
-                  data={this.state.data}
-                  color={this.state.color}
-                  highlights={this.state.highlights}   
-                  highlightIdx={this.state.highlightIdx}  
-                  onBrushEnd={d => this.brushEnd(d)} 
+                width={this.state.width}
+                height={this.state.height} 
+                dimensions={this.parseDimensions(this.state.data[0])}
+                data={this.state.data}
+                color={this.state.color}
+                highlights={this.state.highlights}   
+                highlightIdx={this.state.highlightIdx}   
+                onBrushEnd={d => this.brushEnd(d)}  
               />  
             </div>
             <div
@@ -98,20 +111,20 @@ class Chart extends React.Component {
                 marginBottom: rhythm(1),
               }} >  
             <ReactDataGrid 
-                  columns={this.parseColumns(this.state.data[0])}
-                  rowGetter={i => this.state.data[i]}
-                  rowsCount={this.state.data.length} 
-                  rowSelection={{
-                    showCheckbox: true,
-                    enableShiftSelect: true,
-                    onRowsSelected: this.onRowsSelected,
-                    onRowsDeselected: this.onRowsDeselected,
-                    selectBy: {
-                      indexes: this.state.selectedIndexes
-                    }
-                  }}
-                  /> 
-              </div>
+                columns={this.parseColumns(this.state.data[0])}
+                rowGetter={i => filteredRows[i]}
+                rowsCount={this.state.data.length} 
+                rowSelection={{
+                  showCheckbox: true,
+                  enableShiftSelect: true,
+                  onRowsSelected: this.onRowsSelected,
+                  onRowsDeselected: this.onRowsDeselected,
+                  selectBy: {
+                    indexes: this.state.selectedIndexes
+                  }
+                }}
+                /> 
+            </div>            
         </div>
     )
   }

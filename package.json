@@ -37,6 +37,7 @@
     "prismjs": "^1.16.0",
     "react": "^16.8.6",
     "react-data-grid": "^6.1.0",
+    "react-data-grid-addons": "^6.1.0",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.6.1",
