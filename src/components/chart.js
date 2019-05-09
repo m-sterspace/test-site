@@ -20,10 +20,7 @@ class Chart extends React.Component {
     };
   }
 
-  applyColor(d) { 
-    if (d.HPFrac === "1"){
-      return "#999"
-    }
+  applyColor(d) {  
     return '#9c9ede'
   }
  
@@ -69,17 +66,15 @@ class Chart extends React.Component {
         i => rowIndexes.indexOf(i) === -1
       ),
       highlights: this.state.highlights.filter(
-          i => rowsToRemove.indexOf(i) === -1
+        i => rowsToRemove.indexOf(i) === -1
       )
     }); 
   };
 
-  getGridRows(rows) {       
-    console.log(this.state.filteredIndexes)
-    return this.state.filteredIndexes.length <= 0 ? rows : rows.filter((r, i) => {
-      
-       return this.state.filteredIndexes[r] > -1;
-    })
+  getGridRows(rows) {        
+    return this.state.filteredIndexes.length === 0 ? rows : rows.filter(
+        i => this.state.filteredIndexes.indexOf(i) > -1 
+    )
   }
 
   render() {                      
@@ -90,7 +85,7 @@ class Chart extends React.Component {
                 marginBottom: rhythm(2.5),
               }} >  
               
-              <span>{this.state.filteredIndexes.length}</span>
+              <span>{this.state.filteredIndexes.length || this.state.data.length}</span>
             <div
               style={{ 
                 marginBottom: rhythm(1),
