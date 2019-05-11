@@ -5,8 +5,8 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"      
 import { csvParse } from 'd3-dsv'; 
 import Chart from "../components/chart"; 
-import Container from "../components/container" 
-import styled from 'styled-components'
+import Container from "../components/container"   
+import Grid from '@material-ui/core/Grid';
 
 class ProjectAnalysis extends React.Component { 
     
@@ -17,16 +17,7 @@ class ProjectAnalysis extends React.Component {
     const csv  = require('../../content/projects' + this.props.data.markdownRemark.fields.slug + 'index.csv');    
     const chart =  csvParse(csv.default, (item) => {  
       return item;
-    }) 
-            
-    const Grid = styled.div`
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-      width: 100%; 
-    `
-    const GridColumn = styled.div`  
-      padding: 1em;
-    `  
+    })  
     
     return (
       <Layout location={this.props.location} title={siteTitle}> 
@@ -54,16 +45,14 @@ class ProjectAnalysis extends React.Component {
           <p>
             {post.frontmatter.date}
           </p>
-
-          <Chart data={chart} />  
-          
-          <Grid>
-            <GridColumn> 
-              <div dangerouslySetInnerHTML={{ __html: post.html }} />
-            </GridColumn>
-            <GridColumn>  
-            </GridColumn>
+ 
+          <Grid container spacing={24}> 
+            <Grid item xs={12}>            
+              <Chart data={chart} />   
+            </Grid> 
           </Grid> 
+
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
     
           <hr style={{ marginBottom: rhythm(1), }} />  
 
