@@ -152,26 +152,31 @@ class Chart extends React.Component {
             </div>
 
             <div>  
-            <ReactDataGrid  
-                columns={this.parseColumns(this.props.data.find((r, i) => { 
-                      return i === 0
-                    }) 
-                  )}
-                rowGetter={i => filteredRows[i]}
-                rowsCount={this.state.data.length} 
-                selectAllRenderer={SelectAllRenderer}
-                rowSelection={{
-                  showCheckbox: true,
-                  enableShiftSelect: true,
-                  onRowsSelected: this.onRowsSelected,
-                  onRowsDeselected: this.onRowsDeselected, 
-                  selectBy: {
-                    indexes: this.state.selectedIndexes.map(r => { 
-                      return r.rowIdx 
-                    }) 
-                  }
-                }}
+
+            { // JS interpolation
+             typeof window !== 'undefined' && ReactDataGrid && 
+             
+              <ReactDataGrid  
+                  columns={this.parseColumns(this.props.data.find((r, i) => { 
+                        return i === 0
+                      }) 
+                    )}
+                  rowGetter={i => filteredRows[i]}
+                  rowsCount={this.state.data.length} 
+                  selectAllRenderer={SelectAllRenderer}
+                  rowSelection={{
+                    showCheckbox: true,
+                    enableShiftSelect: true,
+                    onRowsSelected: this.onRowsSelected,
+                    onRowsDeselected: this.onRowsDeselected, 
+                    selectBy: {
+                      indexes: this.state.selectedIndexes.map(r => { 
+                        return r.rowIdx 
+                      }) 
+                    }
+                  }}
                 /> 
+              }
             </div>           
             
             <p
