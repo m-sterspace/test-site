@@ -35,6 +35,6 @@ steps:
     azureSubscription: 'Free Trial (5d79274a-fe9e-402c-91af-267b2932fa6c)'
     appType: 'webApp'
     WebAppName: 'energyexplorer'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
 
 - task: PublishBuildArtifacts@1
