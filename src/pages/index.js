@@ -9,8 +9,7 @@ import Image from "gatsby-image"
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent'; 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography'; 
 
@@ -49,8 +48,7 @@ class Index extends React.Component {
               return (
                 <ListItem key={node.fields.slug}>
                     <Card >
-                      <CardActionArea>
-                        <CardMedia>
+                      <CardActionArea> 
                         <Image
                           fixed={image.node.childImageSharp.fixed}                    
                           style={{
@@ -60,22 +58,24 @@ class Index extends React.Component {
                           }}
                           imgStyle={{ 
                           }}
-                        />
-                        </CardMedia>  
+                        /> 
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="h5" style={{ fontSize: '1.2rem'}}>
                             {title}
                           </Typography>
                           <Typography component="p">
-                          <p 
+                          <span 
                             dangerouslySetInnerHTML={{
                               __html:  node.excerpt,
                             }}
-                          />
-                          <p style={{ 
-                            color: "#999",
-                            marginTop: 0 
-                          }}>{node.frontmatter.date}</p>
+                          />                       
+                          </Typography>
+                          <Typography component="p" style={{  
+                            marginTop: "1.5rem" 
+                          }}> 
+                          <span style={{ 
+                            color: "#999" 
+                          }}>{node.frontmatter.date}</span>
                           
                           </Typography>
                         </CardContent>
