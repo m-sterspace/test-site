@@ -11,8 +11,8 @@ class Chart extends React.Component {
     super(props);
 
     this.state = { 
-        width: 1200,
-        height: 350,
+        width: 900,
+        height: 450,
         dummy: false, 
         data: props.data, 
         selectedIndexes: [],
@@ -21,7 +21,37 @@ class Chart extends React.Component {
         isRowHovered: false
     }; 
   }
- 
+
+  componentDidMount() {
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize)
+  }
+
+  handleResize = () => { 
+      var width = this.state.width
+
+      if (window.innerWidth > 1200)
+        width = window.innerWidth - 200
+
+      if (window.innerWidth < 1200)
+        width = window.innerWidth - 50
+      
+      if (window.innerWidth < 900)
+        width = window.innerWidth - 50
+      
+      if (window.innerWidth < 600)
+        width = window.innerWidth - 50
+
+      this.setState({
+        width: width,
+        height: 350
+    });
+  }
+  
   parseColumns(columns) {
     var array = [];
     Object.keys(columns).forEach(element => {  
@@ -72,6 +102,12 @@ class Chart extends React.Component {
         return (d - mean) / sigma;
       }
   }; 
+
+  switchColor() {
+    this.setState({
+        color: this.zcolor(this.props.data , "HPFrac"),
+    });
+  }
 
   render() {                      
     const rows = this.props.data;
@@ -135,8 +171,9 @@ class Chart extends React.Component {
             }} >
             Row count: {this.state.filteredIndexes.length || this.state.data.length}
           </p>  
-
-          
+ 
+          <input type="button" onClick={this.switchColor.bind(this)} value="Change color" />&nbsp;
+           
       </div>
     )
   }

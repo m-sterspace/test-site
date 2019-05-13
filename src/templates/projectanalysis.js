@@ -5,8 +5,7 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"      
 import { csvParse } from 'd3-dsv'; 
 import Chart from "../components/chart"; 
-import Container from "../components/container"   
-import Grid from '@material-ui/core/Grid';
+import Container from "../components/container"    
 
 class ProjectAnalysis extends React.Component { 
     
@@ -45,12 +44,8 @@ class ProjectAnalysis extends React.Component {
           <p>
             {post.frontmatter.date}
           </p>
- 
-          <Grid container spacing={24}> 
-            <Grid item xs={12}>            
-              <Chart data={chart} />   
-            </Grid> 
-          </Grid> 
+   
+          <Chart data={chart} />              
 
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
     
