@@ -17,14 +17,23 @@ class Chart extends React.Component {
         data: props.data, 
         selectedIndexes: [],
         filteredIndexes: [], 
-        color: this.zcolor(props.data , "WWR"),
+        color: [],
         isRowHovered: false
     }; 
-  }
+  } 
 
-  componentDidMount() {
-    this.handleResize();
-    window.addEventListener('resize', this.handleResize)
+  componentDidMount() { 
+    var key = this.parseColumns(this.props.data.find((r, i) => { 
+        return i === 0
+      })).find((r, i) => {
+        return i === 0
+      })
+      .key
+       
+    this.switchColor(key) 
+    this.handleResize(); 
+
+    window.addEventListener('resize', this.handleResize) 
   }
 
   componentWillUnmount() {
@@ -33,6 +42,9 @@ class Chart extends React.Component {
 
   handleResize = () => { 
       var width = this.state.width
+
+      if (window.innerWidth > 1500)
+        width = 1200
 
       if (window.innerWidth > 1200)
         width = window.innerWidth - 200
@@ -97,86 +109,83 @@ class Chart extends React.Component {
  
   // color by zscore
   zscore(col) {      
-      var mean = un(col).mean(), sigma = un(col).stdDeviation();      
+      var mean = unm.mean(col), sigma = unm.stdDeviation(col);      
       return function(d) { 
         return (d - mean) / sigma;
       }
   }; 
 
-  switchColor() {
+  switchColor(color) {
     this.setState({
-        color: this.zcolor(this.props.data , "HPFrac"),
+        color: this.zcolor(this.props.data , color),
     });
   }
 
   render() {                      
     const rows = this.props.data;
     const filteredRows = this.state.filteredIndexes.length === 0 ? rows : rows.filter(
-        i => this.state.filteredIndexes.indexOf(i) > -1    
-  )
-
-  const SelectAllRenderer = ({ props }) => { 
+        i => this.state.filteredIndexes.indexOf(i) > -1 )  
+    const SelectAllRenderer = ({ props }) => { 
+      return (
+        <div></div>
+      );
+    };     
+    
     return (
-      <div></div>
-    );
-  };
-  
-  return (
-      <div id="grid"
-            style={{ 
-              marginBottom: rhythm(2.5),
-            }} >  
-            
-          <div
-            style={{ 
-              marginBottom: rhythm(1),
-            }} >   
-          <ParallelCoordinates   
-              width={this.state.width}
-              height={this.state.height}  
-              data={this.props.data}
-              color={this.state.color}
-              highlights={this.state.selectedIndexes.map(r => r.row)}    
-              onBrushEnd={d => this.onBrushEnd(d)}   
-            />  
-          </div>
+        <div id="grid"
+              style={{ 
+                marginBottom: rhythm(2.5),
+              }} >  
+              
+            <div
+              style={{ 
+                marginBottom: rhythm(1),
+              }} >   
+            <ParallelCoordinates   
+                width={this.state.width}
+                height={this.state.height}  
+                data={this.props.data}
+                color={this.state.color}
+                highlights={this.state.selectedIndexes.map(r => r.row)}    
+                onBrushEnd={d => this.onBrushEnd(d)}   
+              />  
+            </div>
 
-          <div>  
-          <ReactDataGrid 
-              ref={node => this.grid = node}
-              columns={this.parseColumns(this.props.data[0])}
-              rowGetter={i => filteredRows[i]}
-              rowsCount={this.state.data.length} 
-              selectAllRenderer={SelectAllRenderer}
-              rowSelection={{
-                showCheckbox: true,
-                enableShiftSelect: true,
-                onRowsSelected: this.onRowsSelected,
-                onRowsDeselected: this.onRowsDeselected, 
-                selectBy: {
-                  indexes: this.state.selectedIndexes.map(r => { 
-                    return r.rowIdx 
-                  }) 
-                }
-              }}
-              /> 
-          </div>           
-          
-          <p
-            style={{
-              color: "#999",
-              display: `block`,
-              marginBottom: rhythm(.5),
-              marginTop: rhythm(1),
-            }} >
-            Row count: {this.state.filteredIndexes.length || this.state.data.length}
-          </p>  
- 
-          <input type="button" onClick={this.switchColor.bind(this)} value="Change color" />&nbsp;
-           
-      </div>
-    )
-  }
+            <div>  
+            <ReactDataGrid  
+                columns={this.parseColumns(this.props.data.find((r, i) => { 
+                      return i === 0
+                    }) 
+                  )}
+                rowGetter={i => filteredRows[i]}
+                rowsCount={this.state.data.length} 
+                selectAllRenderer={SelectAllRenderer}
+                rowSelection={{
+                  showCheckbox: true,
+                  enableShiftSelect: true,
+                  onRowsSelected: this.onRowsSelected,
+                  onRowsDeselected: this.onRowsDeselected, 
+                  selectBy: {
+                    indexes: this.state.selectedIndexes.map(r => { 
+                      return r.rowIdx 
+                    }) 
+                  }
+                }}
+                /> 
+            </div>           
+            
+            <p
+              style={{
+                color: "#999",
+                display: `block`,
+                marginBottom: rhythm(.5),
+                marginTop: rhythm(1),
+              }} >
+              Row count: {this.state.filteredIndexes.length || this.state.data.length}
+            </p>   
+        </div>
+      )
+    }
 }
  
 export default Chart;
