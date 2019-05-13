@@ -1,5 +1,5 @@
 import React from "react" 
-import Navigation from './Navigation'
+import Navigation from './navigation'
 import styled, { ThemeProvider, createGlobalStyle  } from "styled-components"
 import { FaInstagram, FaLinkedin, FaYoutube, FaTwitter } from 'react-icons/fa'
 import theme from "../../config/theme" 
