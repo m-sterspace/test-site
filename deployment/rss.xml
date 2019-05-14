@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Parametric Energy Analysis]]></title><description><![CDATA[Parametric Energy Analysis]]></description><link>https://gatsby-starter-blog-demo.netlify.com/</link><generator>RSS for Node</generator><lastBuildDate>Tue, 14 May 2019 15:57:31 GMT</lastBuildDate><item><title><![CDATA[Hello World]]></title><description><![CDATA[Construction Assembly Descriptions Windows Walls Triple Pane IGUs: U-0.28 Curtainwall Spandrel: R-6 Double Pane Argon IGUs: U-0.3…]]></description><link>https://gatsby-starter-blog-demo.netlify.com//first-site/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com//first-site/</guid><pubDate>Tue, 30 Apr 2019 22:12:03 GMT</pubDate><content:encoded>&lt;h3&gt;Construction Assembly Descriptions&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Windows&lt;/th&gt;
+&lt;th&gt;Walls&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Triple Pane IGUs: U-0.28&lt;/td&gt;
+&lt;td&gt;Curtainwall Spandrel: R-6&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Double Pane Argon IGUs: U-0.33&lt;/td&gt;
+&lt;td&gt;Rainscreen w/ thermal clips: R-20&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Double Pane Air IGUs: U-0.38&lt;/td&gt;
+&lt;td&gt;50/50 mix: R-13&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;a href=&quot;/&quot;&gt;Back to all projects&lt;/a&gt; &lt;/p&gt;
+&lt;figure class=&quot;float-right&quot; style=&quot;width: 340px&quot;&gt;
+	
+  &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;/static/3e231eb5de122c7538e882d46ca20b6b/2fa56/Perspective_6702_Tower.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+  
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;&gt;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 67.24422442244224%; position: relative; bottom: 0; left: 0; background-image: url(&amp;apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBBP/EABUBAQEAAAAAAAAAAAAAAAAAAAIA/9oADAMBAAIQAxAAAAHqrKIkG//EABcQAAMBAAAAAAAAAAAAAAAAAAEQEQD/2gAIAQEAAQUCIOjq/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQMBAT8BJ//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAECAQE/Aaf/xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAaEAADAQADAAAAAAAAAAAAAAAAARExIWFx/9oACAEBAAE/IYKqdG/BqaUzIPnT/9oADAMBAAIAAwAAABBz7//EABcRAAMBAAAAAAAAAAAAAAAAAAEQETH/2gAIAQMBAT8Qgav/xAAXEQEAAwAAAAAAAAAAAAAAAAABEBEh/9oACAECAQE/EAVsf//EABsQAQEBAAMBAQAAAAAAAAAAAAERADFBYSFR/9oACAEBAAE/EJHn+cZEqH9HcyKCOEUFB591kAJ3zMlVV93/2Q==&amp;apos;); background-size: cover; display: block;&quot;&gt;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;Gutenberg&quot; title src=&quot;/static/3e231eb5de122c7538e882d46ca20b6b/c739e/Perspective_6702_Tower.jpg&quot; srcset=&quot;/static/3e231eb5de122c7538e882d46ca20b6b/8ee9c/Perspective_6702_Tower.jpg 148w,
+/static/3e231eb5de122c7538e882d46ca20b6b/ebbe7/Perspective_6702_Tower.jpg 295w,
+/static/3e231eb5de122c7538e882d46ca20b6b/c739e/Perspective_6702_Tower.jpg 590w,
+/static/3e231eb5de122c7538e882d46ca20b6b/5413e/Perspective_6702_Tower.jpg 885w,
+/static/3e231eb5de122c7538e882d46ca20b6b/4efde/Perspective_6702_Tower.jpg 1180w,
+/static/3e231eb5de122c7538e882d46ca20b6b/2fa56/Perspective_6702_Tower.jpg 1212w&quot; sizes=&quot;(max-width: 590px) 100vw, 590px&quot;&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+	&lt;figcaption&gt;Initial Rendering&lt;/figcaption&gt;
+&lt;/figure&gt;
+ 
+Note: EUI values do not consider mechanical system inefficiencies or energy savings measures or domestic hot water energy consumption 
+Ventilation heat recovery is considered. Daylighting energy reductions are considered.
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum&lt;/p&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Vancouver Waterfront]]></title><description><![CDATA[This is my first parametric energy analysis]]></description><link>https://gatsby-starter-blog-demo.netlify.com//waterfrontdevelopment/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com//waterfrontdevelopment/</guid><pubDate>Sat, 02 May 2015 22:12:03 GMT</pubDate><content:encoded>&lt;p&gt;This is my first parametric energy analysis&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Landsdowne Parcel 8]]></title><description><![CDATA[This is my first parametric energy analysis]]></description><link>https://gatsby-starter-blog-demo.netlify.com//lansdowneparcel8/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com//lansdowneparcel8/</guid><pubDate>Fri, 01 May 2015 22:12:03 GMT</pubDate><content:encoded>&lt;p&gt;This is my first parametric energy analysis&lt;/p&gt;</content:encoded></item></channel></rss>
